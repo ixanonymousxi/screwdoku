@@ -42,7 +42,7 @@ class SudokuGame
   end
 
   def parse_pos(string)
-    string.split(",").map{|char| Interger(char) }
+    string.split(",").map{|char| Integer(char) }
   end
 
   def get_val
@@ -53,6 +53,10 @@ class SudokuGame
       val = parse_val(gets.chomp)
     end
     val
+  end
+
+  def parse_val(string)
+    Integer(string)
   end
 
   def play_turn
