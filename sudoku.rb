@@ -41,6 +41,10 @@ class SudokuGame
     pos
   end
 
+  def parse_pos(string)
+    string.split(",").map{|char| Integer(char)}
+  end
+
   def get_val
     val = nil
     until val && valid_val?(val)
@@ -49,6 +53,10 @@ class SudokuGame
       val = parse_val(gets.chomp)
     end
     val
+  end
+
+  def parse_val(string)
+    Integer(string)
   end
 
   def play_turn
@@ -69,9 +77,9 @@ class SudokuGame
   end
 
   def valid_pos?(pos)
-    pos.is_a?(:Array) &&
-      pos.length = 2 &&
-      pos.all? { |x| x.in?(0, board.size - 1) }
+    pos.is_a?(Array) &&
+      pos.length == 2 &&
+      pos.all? { |x| x.between?(0, board.size - 1) }
   end
 
   def valid_val?(val)
